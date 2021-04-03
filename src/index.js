@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import Controller from './screens/Controller';
 
 ReactDOM.render(
-  <div></div>,
+  <Controller />,
   document.getElementById('root')
 );
 
