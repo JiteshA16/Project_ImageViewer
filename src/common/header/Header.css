@@ -1,0 +1,12 @@
+.app-header {
+    height: 50px;
+    background-color: rgba(38, 50, 56, 1.0);
+}
+
+.app-logo {
+    color: #fff;
+    font-size: 18px;
+    padding-left: 10px;
+    display: table-cell;
+    vertical-align: middle;
+}
