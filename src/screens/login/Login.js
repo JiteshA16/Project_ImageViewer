@@ -15,8 +15,38 @@ class Login extends Component {
         super();
         this.harcodedUsername = "acharya.jitesh";
         this.hardcodedPassword = "12345678";
+        this.state = {
+            usernameRequired: "dispNone",
+            username: "",
+            passwordRequired: "dispNone",
+            password: "",
+            invalidCredentials: "dispNone"
+        }
     }
 
+    usernameChangedHandler = (e) => {
+        this.setState({ username: e.target.value });
+    }
+
+    passwordChangedHandler = (e) => {
+        this.setState({ password: e.target.value });
+    }
+
+    loginClickHandler = () => {
+        this.state.username === "" ? this.setState({ usernameRequired: "dispBlock" }) : this.setState({ usernameRequired: "dispNone" });
+        this.state.password === "" ? this.setState({ passwordRequired: "dispBlock" }) : this.setState({ passwordRequired: "dispNone" });
+
+        if (this.state.username === this.harcodedUsername && this.state.password === this.hardcodedPassword) {
+            this.setState({ invalidCredentials: "dispNone" });
+            this.props.history.push('/home');
+        } else {
+            if (this.state.username === "" || this.state.password === "") {
+                this.setState({ invalidCredentials: "dispNone" });
+            } else {
+                this.setState({ invalidCredentials: "dispBlock" });
+            }
+        }
+    }
 
     render() {
         return (
@@ -29,23 +59,30 @@ class Login extends Component {
 
                             <FormControl required className="formControl">
                                 <InputLabel htmlFor="username">Username</InputLabel>
-                                <Input id="username" type="text" />
-                                <FormHelperText>
+                                <Input id="username" type="text" username={this.state.username} onChange={this.usernameChangedHandler} />
+                                <FormHelperText className={this.state.usernameRequired}>
                                     <span className="red">required</span>
                                 </FormHelperText>
                             </FormControl>
                             <br /><br />
 
                             <FormControl required className="formControl">
-                                <InputLabel htmlFor="loginPassword">Password</InputLabel>
-                                <Input id="loginPassword" type="password" />
-                                <FormHelperText>
+                                <InputLabel htmlFor="password">Password</InputLabel>
+                                <Input id="password" type="password" password={this.state.password} onChange={this.passwordChangedHandler} />
+                                <FormHelperText className={this.state.passwordRequired}>
                                     <span className="red">required</span>
                                 </FormHelperText>
                             </FormControl>
-                            <br /><br /><br />
 
-                            <Button variant="contained" onClick={this.bookShowButtonHandler} color="primary">
+                            <br /><br />
+
+                            <FormHelperText className={this.state.invalidCredentials}>
+                                <span className="red">Incorrect username and/or password</span>
+                            </FormHelperText>
+
+                            <br /><br />
+
+                            <Button variant="contained" onClick={this.loginClickHandler} color="primary">
                                 LOGIN
                             </Button>
 
