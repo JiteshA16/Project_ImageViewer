@@ -60,7 +60,7 @@ class Header extends Component {
                     {this.props.showProfileIcon
                         ? <span>
                             <IconButton onClick={event => this.openMenuList(event)}>
-                                <Avatar className="avatar" src="http://cdn.akc.org/content/article-body-image/samoyed_puppy_dog_pictures.jpg">AJ</Avatar>
+                                <Avatar className="avatar" src="https://pbs.twimg.com/profile_images/1222654825403424768/-ySQePLc.jpg">AJ</Avatar>
                             </IconButton>
                             <Menu
                                 className="profile-menu"

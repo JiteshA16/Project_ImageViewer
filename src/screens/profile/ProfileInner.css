@@ -1,0 +1,67 @@
+.user-info {
+    color: black;
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+.user-id {
+    color: black;
+    font-size: xx-large;
+}
+
+.user-name {
+    color: black;
+    font-size: larger;
+    margin-right: 20px;
+}
+
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 100px 0px 100px;
+}
+
+.profile-details{
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-image{
+    float: left;
+    height: 50px;
+    width: 50px;
+    margin-right: 80px;
+    margin-top: -20px;
+}
+
+.profile-account-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.follower-details{
+    display: flex;
+}
+
+.user-details{
+    font-size: 18px;
+}
+
+.editicon{
+    background-color: #dc004e;
+    color: white;
+    border-radius: 20px;
+    padding: 7px;
+}
+
+.edit-modal {
+    width: 160px;
+    height: auto;
+    padding: 50px;
+    background-color: lightgray;
+    margin-left: 40%;
+    margin-top: 15%;
+}

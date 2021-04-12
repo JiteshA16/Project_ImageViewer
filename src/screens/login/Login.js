@@ -39,7 +39,7 @@ class Login extends Component {
 
         if (this.state.username === this.harcodedUsername && this.state.password === this.hardcodedPassword) {
             this.setState({ invalidCredentials: "dispNone" });
-            sessionStorage.setItem("access-token", "IGQVJYcTdMYzFKWWdCN0UtcmY2cE5XU3hYbUg4ODFhbU0xUVF6STNlanZAnbGpPZAEpyVjZAERW94R3NGTnZAqVkdBRVVJX0hkNUp3dWk2dlZAFb21VNmNYR2NFVGRudFdIdmxwd2g4ZAF80Vk9pUVZASYXpnUC1ZALUt3YXUzOXo4");
+            sessionStorage.setItem("access-token", "IGQVJXMkQ3Q1hkVHN4OGRUSHM0bmpNd2dYcGdTeVlYZA1ZAZAbGpZAV0RTbm5YNGZA0NEw0Snhjdm9EUjFLMlpQWVhFWm9vWU5OUzZAHTDlnYkxGRmdoQ21DSmt6bTNXdXFBY0xVR2lLZAEMxT01ZAcUxBckdhZAGpZAWVpUUE1sakVF");
             this.props.history.push('/home');
         } else {
             if (this.state.username === "" || this.state.password === "") {
