@@ -20,7 +20,8 @@ class Login extends Component {
             username: "",
             passwordRequired: "dispNone",
             password: "",
-            invalidCredentials: "dispNone"
+            invalidCredentials: "dispNone",
+            isUserLoggedIn: sessionStorage.getItem("access-token") === null ? false : true
         }
     }
 
@@ -38,6 +39,7 @@ class Login extends Component {
 
         if (this.state.username === this.harcodedUsername && this.state.password === this.hardcodedPassword) {
             this.setState({ invalidCredentials: "dispNone" });
+            sessionStorage.setItem("access-token", "IGQVJVRTg4ZAUtoYkpBbVNNRDhjR2o3b0hvcVRTM0JMQUk2ZA2JVVUpNbGt0WVlhWkVtUjhRa2szd0cyaHdTN3daVzR3YkJTTVlpc3FJN2JCNXZA1UlRaRGFkclNGMHduLUJwM3lENkpybkJfUHdFOWZAyVWwxRERKNHhfWERr");
             this.props.history.push('/home');
         } else {
             if (this.state.username === "" || this.state.password === "") {
@@ -51,7 +53,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <Header />
+                <Header showSearchBox={false} showProfileIcon={false} showMyAccount={false} />
                 <div className="login">
                     <Card className="cardStyle">
                         <CardContent>
