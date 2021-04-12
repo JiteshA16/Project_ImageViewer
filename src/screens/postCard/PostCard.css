@@ -1,0 +1,43 @@
+/* Style for avatar */
+.avatar {
+    margin-left: 15px;
+}
+
+.post-card{
+    width: 48%;
+    margin: 10px;
+}
+
+.add-comment{
+    width: 85%;
+}
+
+.comment-btn {
+    width: 8%;
+    margin-left: -45px;
+    margin-top: 12px;
+}
+.add-comment {
+    margin-bottom: 20px;
+}
+
+.all-comments {
+    margin-top: -33px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+li {
+    list-style-type: none;
+    margin-left: -38px;
+}
+
+.postcomments-section {
+    margin-top: 10px;
+}
+
+.divider{
+    border-bottom: groove;
+    width: 100%;
+    margin-left: 0%;
+}
