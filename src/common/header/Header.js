@@ -6,6 +6,7 @@ import Input from '@material-ui/core/Input'
 import IconButton from '@material-ui/core/IconButton'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -34,6 +35,7 @@ class Header extends Component {
 
     accountClickHandler = () => {
         this.closeMenuList();
+
     }
 
     logoutClickHandler = () => {
@@ -58,7 +60,7 @@ class Header extends Component {
                     {this.props.showProfileIcon
                         ? <span>
                             <IconButton onClick={event => this.openMenuList(event)}>
-                                <Avatar className="avatar" src="http://cdn.akc.org/content/article-body-image/samoyed_puppy_dog_pictures.jpg">AJ</Avatar>
+                                <Avatar className="avatar" src="https://pbs.twimg.com/profile_images/1222654825403424768/-ySQePLc.jpg">AJ</Avatar>
                             </IconButton>
                             <Menu
                                 className="profile-menu"
@@ -69,7 +71,11 @@ class Header extends Component {
                                 onClose={this.closeMenuList}>
                                 {this.props.showMyAccount ?
                                     <div>
-                                        <MenuItem onClick={this.accountClickHandler}>My account</MenuItem>
+                                        <MenuItem onClick={this.accountClickHandler}>
+                                            <Link to={"/profile"}>
+                                                My account
+                                            </Link>
+                                        </MenuItem>
                                         <div className="divider"> </div>
                                     </div>
                                     : ""}

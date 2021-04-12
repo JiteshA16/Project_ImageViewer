@@ -11,18 +11,22 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-
+import { Link } from 'react-router-dom';
 
 class PostCard extends Component {
 
-    state = {
-        postTime: "",
-        userpost: {},
-        comments: [],
-        comment: "",
-        isLiked: false,
-        postLikes: 0
+    constructor() {
+        super();
+        this.state = {
+            postTime: "",
+            userpost: {},
+            comments: [],
+            comment: "",
+            isLiked: false,
+            postLikes: 0
+        }
     }
+
     componentWillMount() {
         this.setState({ likes: Math.ceil(Math.random() * 100) });
         let data = null;
@@ -36,15 +40,11 @@ class PostCard extends Component {
 
         let accesstoken = sessionStorage.getItem("access-token");
         xhr.open("GET", "https://graph.instagram.com/" + this.props.userPost.id + "?fields=id,media_type,media_url,username,timestamp&access_token=" + accesstoken);
-        //xhr.send(data);
+        xhr.send(data);
 
     }
 
-    openProfilePage = (event) => {
-        console.log("Open profile page");
-    }
-
-    likeHandler = (event) => {
+    likeHandler = () => {
         let numLikes = this.state.postLikes;
         if (this.state.isLiked) {
             this.setState({ likes: numLikes - 1 });
@@ -77,8 +77,10 @@ class PostCard extends Component {
                 <Card >
                     <CardHeader
                         avatar={
-                            <IconButton onClick={event => this.openProfilePage}>
-                                <Avatar className="avatar" src="https://pbs.twimg.com/profile_images/1222654825403424768/-ySQePLc.jpg"></Avatar>
+                            <IconButton>
+                                <Link to={"/profile"}>
+                                    <Avatar className="avatar" src="https://pbs.twimg.com/profile_images/1222654825403424768/-ySQePLc.jpg"></Avatar>
+                                </Link>
                             </IconButton>
                         }
                         title={this.state.userpost.username}
@@ -102,7 +104,7 @@ class PostCard extends Component {
                             {this.props.userPost.caption}
                         </Typography>
 
-                        <div style={{ display: 'flex', marginTop: 10, marginBottom: 50 }}>
+                        <div className="favorites-container">
                             <IconButton aria-label="add to favorites" className="like" onClick={this.likeHandler}>
                                 {this.state.isLiked ? <Favorite style={{ color: "red", marginRight: 10 }} /> : <FavoriteIcon />}
                                 <Typography className="like-count">{this.state.likes} likes</Typography>
@@ -113,10 +115,8 @@ class PostCard extends Component {
                             <div className="all-comments">
                                 <CommentList list={this.state.comments} user={this.state.userpost.username} />
                             </div>
-                            <TextField id="standard-basic" placeholder="Add a comment" value={this.state.comment} onChange={this.commentHandler} className="add-comment" />
-                            <Button variant="contained" color="primary" onClick={this.addCommentHandler} style={{ float: 'right' }}>
-                                ADD
-                        </Button>
+                            <TextField id="standard-basic" label="Add a comment" value={this.state.comment} onChange={this.commentHandler} className="add-comment" />
+                            <Button variant="contained" color="primary" onClick={this.addCommentHandler} style={{ float: 'right' }}>ADD</Button>
                         </div>
                     </CardContent>
 
@@ -129,7 +129,7 @@ class PostCard extends Component {
 const CommentList = ({ list, user }) => (
     <ul>
         {list.map((item) => (
-            <li key={item + "" + 1}><span style={{ fontWeight: "bold", marginTop: 10 }}>{user}:</span> {item}</li>
+            <li key={item + "" + 1}><span className="comment-list">{user}:</span> {item}</li>
         ))}
     </ul>
 );
