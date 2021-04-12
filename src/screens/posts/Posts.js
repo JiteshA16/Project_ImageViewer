@@ -6,7 +6,11 @@ const Posts = (props) => {
     console.log("posts container", props)
     
     const postsList = props.userPosts.map(post => {
-        return <PostCard postId={post.id} userPost={post} isProfilePage={false} />
+        if (props.isProfilePage === true) {
+            console.log('Profile page open');
+        } else {
+            return <PostCard postId={post.id} userPost={post} isProfilePage={false}/>
+        }
     })
 
     return (
